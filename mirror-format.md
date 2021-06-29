@@ -44,23 +44,23 @@ install/
 
     rhel.ipxe # Uses version numbers, path $mirror_url/rhel/$version_number/ EX: 7, 8
 
-    ubuntu.ipxe # Uses version numbers without dots, path $mirror_url/ubuntu/$version_number/ EX: 20.04 LTS -> 2004, 21.04 -> 2104c
+    ubuntu.ipxe # Uses version numbers without dots, path $mirror_url/ubuntu/$version_number/ EX: 20.04 LTS -> 2004, 21.04 -> 2104
 
     windows.ipxe # Uses version 'numbers', path $mirror_url/win/$version/ EX: Windows 10 -> W10, Server 2019 -> S2019
 ```
 
 ## **Specific documentation on required files:**
 
-**`tools/dban.ipxe`:** `DBAN.BZI` can be found by downloading the latest version of DBAN in ISO format, mounting the ISO, and extracting the `dban.bzi` file.
+**`tools/dban.ipxe`:** `DBAN.BZI` can be found by downloading the latest version of DBAN in ISO format from https://dban.org/, mounting the ISO, and extracting the `dban.bzi` file.
 
-**`live/debian.ipxe`:** Needs `filesystem.squashfs`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the latest LIVE-ISO from debian.org, mounting the ISO, and extracting those files from the `live/` directory within the ISO. `initrd.img` and `vmlinuz` may be suffixed by the kernel version.
+**`live/debian.ipxe`:** Needs `filesystem.squashfs`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the latest LIVE-ISO from https://debian.org, mounting the ISO, and extracting those files from the `live/` directory within the ISO. `initrd.img` and `vmlinuz` may be suffixed by the kernel version.
 
-**`live/fedora.ipxe`:** Needs `squashfs.img`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the DVD-ISO from getfedora.org, mounting the ISO. The `initrd.img` and `vmlinuz` files can be found in the path `images/pxeboot` within the ISO, and `squashfs.img` can be found within the `LiveOS/` directory.
+**`live/fedora.ipxe`:** Needs `squashfs.img`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the DVD-ISO from https://getfedora.org, mounting the ISO. The `initrd.img` and `vmlinuz` files can be found in the path `images/pxeboot` within the ISO, and `squashfs.img` can be found within the `LiveOS/` directory.
 
-**`live/kali.ipxe`:** Needs `filesystem.squashfs`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the latest Live Boot ISO from kali.org. All files can be found in the `live/` directory. `initrd.img` and `vmlinuz` may have copies suffixed by the kernel version.
+**`live/kali.ipxe`:** Needs `filesystem.squashfs`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the latest Live Boot ISO from https://kali.org. All files can be found in the `live/` directory. `initrd.img` and `vmlinuz` may have copies suffixed by the kernel version.
 
 **`live/popos.ipxe`:** Needs `filesystem.squashfs`, `initrd`, and `vmlinuz`. `filesystem.squashfs` can be found in an ISO downloaded from https://pop.system76.com/, in the `casper/` directory. However, both `initrd` and `vmlinuz` will have to be aquired from the netboot.xyz repositories. Download `initrd` and `vmlinuz` from https://github.com/netbootxyz/ubuntu-squash/releases/tag/5-66b7e861.
 
-**`install/alpine.ipxe`:** Needs `modloop-lts`, `initramfs-lts`, and `vmlinuz-lts`. All of these can be found by downloading the netboot build from alpinelinux.org.
+**`install/alpine.ipxe`:** Needs `modloop-lts`, `initramfs-lts`, and `vmlinuz-lts`. All of these can be found by downloading the netboot build from https://alpinelinux.org.
 
 **`install/debian.ipxe`:** 
