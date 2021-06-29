@@ -1,0 +1,30 @@
+#!ipxe
+
+set alpine_mirror http://192.168.23.80/scratch/pxeboot/alpine
+
+set repo_url http://dl-cdn.alpinelinux.org/alpine
+
+isset ${dhcp-server} && set ipparam ip=dhcp || set ipparam ip=${ip}::${gateway}:${netmask}::eth0:none:${dns}
+
+:alpine
+clear selection
+
+menu alpine Installers 
+
+item --gap Installers:
+item v3.14 ${space} Alpine 3.14.0 (LTS)
+
+choose selection || goto alpine_exit
+
+goto alpine_installer
+
+:alpine_exit
+clear menu
+exit 0
+
+
+:alpine_installer
+imgfree
+kernel ${alpine_mirror}/${selection}/vmlinuz-lts ${ipparam} alpine_repo=${repo_url}/${selection}/main modules=loop,squashfs modloop=${alpine_mirror}/${selection}/modloop-lts quiet nomodeset ${cmdline}
+initrd ${alpine_mirror}/${selection}/initramfs-lts
+boot

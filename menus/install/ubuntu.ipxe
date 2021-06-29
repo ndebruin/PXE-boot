@@ -1,0 +1,28 @@
+#!ipxe
+
+set ubuntu_mirror http://192.168.23.80/scratch/pxeboot/ubuntu
+
+
+:ubuntu
+clear selection
+
+menu Ubuntu Installers 
+
+item --gap Installers:
+item 2004-server ${space} Ubuntu 20.04 LTS (Server)
+#item 2004-desktop ${space} Ubuntu 20.04 LTS (Desktop) [Possibly Non-functional]
+
+choose selection || goto ubuntu_exit
+
+goto ubuntu_installer
+
+:ubuntu_exit
+clear menu
+exit 0
+
+
+:ubuntu_installer
+imgfree
+kernel ${ubuntu_mirror}/${selection}/vmlinuz root=/dev/ram0 ramdisk_size=3000000 ip=dhcp url=${ubuntu_mirror}/${selection}/ubuntu.iso initrd=initrd
+initrd ${ubuntu_mirror}/${selection}/initrd
+boot

@@ -1,0 +1,31 @@
+#!ipxe
+
+set fedora_live_mirror http://192.168.23.80/scratch/pxeboot/fedora/live
+
+isset ${dhcp-server} && set ipparam ip=dhcp || set ipparam ip=${ip}::${gateway}:${netmask}:::none nameserver=${dns}
+set ipparam BOOTIF=${netX/mac} ${ipparam}
+
+:fedora
+clear selection
+
+menu Fedora Live Images
+
+item --gap Live Images:
+item 34gnome ${space} Fedora 34 Workstation (GNOME Desktop)
+item 33gnome ${space} Fedora 33 Workstation (GNOME Desktop)
+
+choose selection || goto fedora_exit
+
+goto fedora_installer
+
+:fedora_exit
+clear menu
+exit 0
+
+
+:fedora_installer
+imgfree
+kernel ${fedora_live_mirror}/${selection}/vmlinuz ${ipparam} root=live:${fedora_live_mirror}/${selection}/squashfs.img ro rd.live.image rd.lvm=0 rd.luks=0 rd.md=0 rd.dm=0 initrd=initrd.img ${cmdline}
+initrd ${fedora_live_mirror}/${selection}/initrd.img
+boot
+

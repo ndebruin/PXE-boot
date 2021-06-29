@@ -1,0 +1,28 @@
+#!ipxe
+
+set fedora_mirror http://192.168.23.80/scratch/pxeboot/fedora
+
+
+:fedora
+clear selection
+
+menu Fedora Installers 
+
+item --gap Installers:
+item 34 ${space} Fedora 34 
+item 33 ${space} Fedora 33
+
+choose selection || goto fedora_exit
+
+goto fedora_installer
+
+:fedora_exit
+clear menu
+exit 0
+
+
+:fedora_installer
+imgfree
+kernel ${fedora_mirror}/${selection}/vmlinuz inst.repo=${fedora_mirror}/${selection} ${params} ${ipparam} initrd=initrd.img
+initrd ${fedora_mirror}/${selection}/initrd.img
+boot

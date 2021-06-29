@@ -1,0 +1,27 @@
+#!ipxe
+
+set debian_mirror http://192.168.23.80/scratch/pxeboot/debian
+
+
+:debian
+clear selection
+
+menu Debian Installers 
+
+item --gap Installers:
+item buster ${space} Debian 10 (buster)
+
+choose selection || goto debian_exit
+
+goto deb_installer
+
+:debian_exit
+clear menu
+exit 0
+
+
+:deb_installer
+imgfree
+kernel ${debian_mirror}/${selection}/linux initrd=initrd.gz
+initrd ${debian_mirror}/${selection}/initrd.gz
+boot

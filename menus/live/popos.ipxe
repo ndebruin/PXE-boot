@@ -1,0 +1,28 @@
+#!ipxe
+
+set popos_live_mirror http://192.168.23.80/scratch/pxeboot/popos/live
+
+:popos
+clear selection
+
+menu PopOS Live Images
+
+item --gap Live Images:
+item 2004 ${space} PopOS 20.04 (LTS)
+
+choose selection || goto popos_exit
+
+goto popos_installer
+
+:popos_exit
+clear menu
+exit 0
+
+
+:popos_installer
+imgfree
+set squash_url ${popos_live_mirror}/${selection}/filesystem.squashfs
+kernel ${popos_live_mirror}/${selection}/vmlinuz ip=dhcp boot=casper netboot=url url=${squash_url} initrd=initrd ${cmdline}
+initrd ${popos_live_mirror}/${selection}/initrd
+boot
+

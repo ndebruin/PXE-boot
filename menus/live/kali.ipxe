@@ -1,0 +1,28 @@
+#!ipxe
+
+set kali_live_mirror http://192.168.23.80/scratch/pxeboot/kali/live
+
+:kali
+clear selection
+
+menu Kali Live Images
+
+item --gap Live Images:
+item latest ${space} Kali Latest (Live USB Version)
+
+choose selection || goto kali_exit
+
+goto kali_installer
+
+:kali_exit
+clear menu
+exit 0
+
+
+:kali_installer
+imgfree
+set params components
+kernel ${kali_live_mirror}/${selection}/vmlinuz boot=live ${params} fetch=${kali_live_mirror}/${selection}/filesystem.squashfs initrd=initrd.img ${cmdline}
+initrd ${kali_live_mirror}/${selection}/initrd.img
+boot
+

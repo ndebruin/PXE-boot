@@ -1,0 +1,72 @@
+#!ipxe
+
+:start
+chain --autofree boot.cfg ||
+ntp 0.pool.ntp.org ||
+
+iseq ${cls} serial && goto ignore_cls ||
+set cls:hex 1b:5b:4a  # ANSI clear screen sequence - "^[[J"
+set cls ${cls:string}
+:ignore_cls
+
+isset ${ip} || dhcp || echo DHCP failed
+
+:main_menu
+
+clear version
+set space:hex 20:20
+set space ${space:string}
+
+iseq ${arch} x86_64 && set arch_a amd64 || set arch_a ${arch}
+
+menu ${netX/domain} [Local IP: ${netX/ip} on ${netX/chip}] ${arch_a} ${arch}
+
+item --gap Default:
+item local ${space} Boot from local Drive
+
+item --gap Installers:
+item install/rhel ${space} Install RedHat Enterprise Linux
+item install/windows ${space} Install Windows 10/Server 2019
+item install/debian ${space} Install Debian Linux
+item install/fedora ${space} Install Fedora Linux
+item install/alpine ${space} Install Alpine Linux
+item install/ubuntu ${space} Install Ubuntu Linux
+
+item --gap Live Boot Images:
+item live/debian ${space} Debian Live
+item live/fedora ${space} Fedora Live
+item live/kali ${space} Kali Live
+item live/popos ${space} PopOS Live
+
+item --gap Tools:
+item tools/netinfo ${space} Network Card Info
+item shell ${space} iPXE Shell
+item tools/lspci ${space} List PCI Devices
+item tools/dban ${space} DBAN
+
+isset ${menu} && set timeout 0 || set timeout 300000
+choose --timeout ${timeout} --default ${menu} menu || goto local
+echo ${cls}
+goto ${menu} ||
+#imgverify ${menu}.ipxe ${sigs}${menu}.ipxe.sig || goto error
+chain ${menu}.ipxe || goto error
+goto main_menu
+
+
+
+:local
+echo Booting from local disks ...
+exit 0
+
+
+:error
+echo Error occured, press any key to return to menu ...
+prompt
+goto main_menu
+
+:shell
+echo Type "exit" to return to menu.
+set menu main_menu
+shell
+goto main_menu
+

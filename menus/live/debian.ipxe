@@ -1,0 +1,27 @@
+#!ipxe
+
+set debian_live_mirror http://192.168.23.80/scratch/pxeboot/debian/live
+
+:debian
+clear selection
+
+menu Debian Live Images
+
+item --gap Live Images:
+item buster ${space} Debian 10 (buster)
+
+choose selection || goto debian_exit
+
+goto deb_installer
+
+:debian_exit
+clear menu
+exit 0
+
+
+:deb_installer
+imgfree
+kernel ${debian_live_mirror}/${selection}/vmlinuz boot=live fetch=${debian_live_mirror}/${selection}/filesystem.squashfs initrd=initrd.img ${cmdline}
+initrd ${debian_live_mirror}/${selection}/initrd.img
+boot
+

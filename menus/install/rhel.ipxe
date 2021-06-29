@@ -1,0 +1,46 @@
+#!ipxe
+
+# Redhat Enterprise Linux (RHEL)
+# https://www.redhat.com
+
+# set path of RHEL pxeboot files
+set rhel_base_url http://192.168.23.80/scratch/pxeboot/rhel
+# set default version of RHEL
+set rhel_version 8
+
+# DO NOT TOUCH ANYTHING BELOW
+
+isset ${dhcp-server} && set ipparam ip=dhcp || set ipparam ip=${ip}::${gateway}:${netmask}:::none nameserver=${dns}
+set ipparam BOOTIF=${netX/mac} ${ipparam}
+
+goto ${menu} ||
+
+:rhel
+set os Red Hat Enterprise Linux
+clear selection
+menu ${os}
+item --gap Installers
+item boot ${space} ${os} Graphical Install
+item text_boot ${space} ${os} Text Install
+item --gap Options:
+item version_set ${space} Version [ ${rhel_version} ]
+choose selection || goto rhel_exit
+goto ${selection}
+
+:version_set
+iseq ${rhel_version} 8 && set rhel_version 7 || set rhel_version 8
+goto rhel
+
+:text_boot
+set params inst.text
+goto boot
+
+:boot
+imgfree
+set rhel_kernel_url ${rhel_base_url}/${rhel_version}/images/pxeboot
+kernel ${rhel_kernel_url}/vmlinuz inst.repo=${rhel_base_url}/${rhel_version} ${ipparam} ${params} initrd=initrd.img ${cmdline}
+initrd ${rhel_kernel_url}/initrd.img
+boot
+
+:rhel_exit
+exit 0
