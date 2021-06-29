@@ -4,7 +4,7 @@
 # https://www.redhat.com
 
 # set path of RHEL pxeboot files
-set rhel_base_url http://192.168.23.80/scratch/pxeboot/rhel
+set rhel_mirror ${mirror_url}/rhel
 # set default version of RHEL
 set rhel_version 8
 
@@ -37,8 +37,8 @@ goto boot
 
 :boot
 imgfree
-set rhel_kernel_url ${rhel_base_url}/${rhel_version}/images/pxeboot
-kernel ${rhel_kernel_url}/vmlinuz inst.repo=${rhel_base_url}/${rhel_version} ${ipparam} ${params} initrd=initrd.img ${cmdline}
+set rhel_kernel_url ${rhel_mirror}/${rhel_version}/images/pxeboot
+kernel ${rhel_kernel_url}/vmlinuz inst.repo=${rhel_mirror}/${rhel_version} ${ipparam} ${params} initrd=initrd.img ${cmdline}
 initrd ${rhel_kernel_url}/initrd.img
 boot
 

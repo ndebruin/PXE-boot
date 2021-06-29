@@ -1,7 +1,9 @@
 #!ipxe
 
-set alpine_mirror http://192.168.23.80/scratch/pxeboot/alpine
+set alpine_mirror ${mirror_url}/alpine
 
+
+# DO NOT TOUCH
 set repo_url http://dl-cdn.alpinelinux.org/alpine
 
 isset ${dhcp-server} && set ipparam ip=dhcp || set ipparam ip=${ip}::${gateway}:${netmask}::eth0:none:${dns}

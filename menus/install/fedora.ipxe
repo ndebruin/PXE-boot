@@ -1,8 +1,9 @@
 #!ipxe
 
-set fedora_mirror http://192.168.23.80/scratch/pxeboot/fedora
+set fedora_mirror ${mirror_url}/fedora
 
 
+# DO NOT TOUCH
 :fedora
 clear selection
 

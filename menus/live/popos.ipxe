@@ -1,7 +1,9 @@
 #!ipxe
 
-set popos_live_mirror http://192.168.23.80/scratch/pxeboot/popos/live
+set popos_live_mirror ${mirror_url}/popos/live
 
+
+# DO NOT TOUCH
 :popos
 clear selection
 

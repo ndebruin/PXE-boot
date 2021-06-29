@@ -1,7 +1,9 @@
 #!ipxe
 
-set debian_live_mirror http://192.168.23.80/scratch/pxeboot/debian/live
+set debian_live_mirror ${mirror_url}/debian/live
 
+
+# DO NOT TOUCH
 :debian
 clear selection
 

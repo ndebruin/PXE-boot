@@ -4,7 +4,7 @@
 # https://www.microsoft.com
 
 # SET DEFAULT URL FOR BOOT
-set win_base_url http://192.168.23.80/scratch/pxeboot/win
+set win_mirror ${mirror_url}/win
 # SET DEFAULT VERSION OF WINDOWS
 # W10 for Windows 10, S2019 for Server 2019
 set version_win W10
@@ -30,14 +30,14 @@ goto windows
 
 :boot
 imgfree
-kernel ${win_base_url}/wimboot
-initrd -n bootmgr     ${win_base_url}/${version_win}/bootmgr       bootmgr ||
-initrd -n bootmgr.efi ${win_base_url}/${version_win}/bootmgr.efi   bootmgr.efi ||      
-initrd -n bcd         ${win_base_url}/${version_win}/boot/bcd      bcd ||
-initrd -n bcd         ${win_base_url}/${version_win}/Boot/BCD      bcd ||
-initrd -n boot.sdi    ${win_base_url}/${version_win}/boot/boot.sdi boot.sdi ||
-initrd -n boot.sdi    ${win_base_url}/${version_win}/Boot/boot.sdi boot.sdi ||
-initrd -n boot.wim    ${win_base_url}/${version_win}/sources/boot.wim boot.wim
+kernel ${win_mirror}/wimboot
+initrd -n bootmgr     ${win_mirror}/${version_win}/bootmgr       bootmgr ||
+initrd -n bootmgr.efi ${win_mirror}/${version_win}/bootmgr.efi   bootmgr.efi ||      
+initrd -n bcd         ${win_mirror}/${version_win}/boot/bcd      bcd ||
+initrd -n bcd         ${win_mirror}/${version_win}/Boot/BCD      bcd ||
+initrd -n boot.sdi    ${win_mirror}/${version_win}/boot/boot.sdi boot.sdi ||
+initrd -n boot.sdi    ${win_mirror}/${version_win}/Boot/boot.sdi boot.sdi ||
+initrd -n boot.wim    ${win_mirror}/${version_win}/sources/boot.wim boot.wim
 boot
 
 :windows_exit

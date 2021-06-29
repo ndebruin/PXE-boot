@@ -1,7 +1,9 @@
 #!ipxe
 
-set kali_live_mirror http://192.168.23.80/scratch/pxeboot/kali/live
+set kali_live_mirror ${mirror_url}/kali/live
 
+
+# DO NOT TOUCH
 :kali
 clear selection
 

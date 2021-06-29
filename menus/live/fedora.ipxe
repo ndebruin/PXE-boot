@@ -1,7 +1,9 @@
 #!ipxe
 
-set fedora_live_mirror http://192.168.23.80/scratch/pxeboot/fedora/live
+set fedora_live_mirror ${mirror_url}/fedora/live
 
+
+# DO NOT TOUCH
 isset ${dhcp-server} && set ipparam ip=dhcp || set ipparam ip=${ip}::${gateway}:${netmask}:::none nameserver=${dns}
 set ipparam BOOTIF=${netX/mac} ${ipparam}
 

@@ -48,7 +48,6 @@ isset ${menu} && set timeout 0 || set timeout 300000
 choose --timeout ${timeout} --default ${menu} menu || goto local
 echo ${cls}
 goto ${menu} ||
-#imgverify ${menu}.ipxe ${sigs}${menu}.ipxe.sig || goto error
 chain ${menu}.ipxe || goto error
 goto main_menu
 

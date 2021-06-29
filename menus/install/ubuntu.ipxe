@@ -1,8 +1,9 @@
 #!ipxe
 
-set ubuntu_mirror http://192.168.23.80/scratch/pxeboot/ubuntu
+set ubuntu_mirror ${mirror_url}/ubuntu
 
 
+# DO NOT TOUCH
 :ubuntu
 clear selection
 

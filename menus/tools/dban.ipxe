@@ -1,7 +1,9 @@
 #!ipxe
 
-set dban_mirror http://192.168.23.80/scratch/pxeboot/
+set dban_mirror ${mirror_url}/DBAN.BZI
 
+
+# DO NOT TOUCH
 :dban
 clear selection
 
