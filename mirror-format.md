@@ -118,7 +118,7 @@ Download the Live ISO, and mount it. Inside the `casper/` directory you will fin
 Copy `initd`, `vmlinuz`, and `ubuntu.iso to the base of the designated mirror path.
 
 ## **`install/windows.ipxe`:** 
-You will need `wimboot` to be able to boot Windows. `wimboot` can be found [here](), and will need to be placed at the base of the designated mirror path. 
+You will need `wimboot` to be able to boot Windows. `wimboot` can be found [here](https://github.com/ipxe/wimboot/releases/latest/download/wimboot), and will need to be placed at the base of the designated mirror path. 
 
 For each version of Windows you want, EX; Server 2019 and Windows 10, make a folder inline with the naming scheme in the base of the designated mirror path. `Server 2019 -> S2019 | Windows 10 -> W10`.
 
