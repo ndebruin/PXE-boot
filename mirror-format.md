@@ -14,7 +14,7 @@ All Linux Installers expect at least a `vmlinuz` and an `initrd`.
 
 Specific documentation can be found below.
 
-## **Path requirements for every file:**
+# **Path requirements for every file:**
 In a somewhat tree style breakdown, with `menus/` being the root.
 ```
 boot.cfg # Set mirror_url according to above
@@ -44,23 +44,84 @@ install/
 
     rhel.ipxe # Uses version numbers, path $mirror_url/rhel/$version_number/ EX: 7, 8
 
-    ubuntu.ipxe # Uses version numbers without dots, path $mirror_url/ubuntu/$version_number/ EX: 20.04 LTS -> 2004, 21.04 -> 2104
+    ubuntu.ipxe # Uses version numbers without dots and the type, path $mirror_url/ubuntu/$version_number-$version_type/ EX: 20.04 LTS Server-> 2004-server, 21.04 Desktop -> 2104-desktop
 
     windows.ipxe # Uses version 'numbers', path $mirror_url/win/$version/ EX: Windows 10 -> W10, Server 2019 -> S2019
 ```
 
-## **Specific documentation on required files:**
+# **Specific documentation on required files:**
 
-**`tools/dban.ipxe`:** `DBAN.BZI` can be found by downloading the latest version of DBAN in ISO format from https://dban.org/, mounting the ISO, and extracting the `dban.bzi` file.
+## **`tools/dban.ipxe`:** 
+`DBAN.BZI` can be found by downloading the latest version of DBAN in ISO format from https://dban.org/, mounting the ISO, and extracting the `dban.bzi` file.
 
-**`live/debian.ipxe`:** Needs `filesystem.squashfs`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the latest LIVE-ISO from https://debian.org, mounting the ISO, and extracting those files from the `live/` directory within the ISO. `initrd.img` and `vmlinuz` may be suffixed by the kernel version.
+# **Live Images:**
 
-**`live/fedora.ipxe`:** Needs `squashfs.img`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the DVD-ISO from https://getfedora.org, mounting the ISO. The `initrd.img` and `vmlinuz` files can be found in the path `images/pxeboot` within the ISO, and `squashfs.img` can be found within the `LiveOS/` directory.
+## **`live/debian.ipxe`:** 
+Needs `filesystem.squashfs`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the latest LIVE-ISO from https://debian.org, mounting the ISO.
 
-**`live/kali.ipxe`:** Needs `filesystem.squashfs`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the latest Live Boot ISO from https://kali.org. All files can be found in the `live/` directory. `initrd.img` and `vmlinuz` may have copies suffixed by the kernel version.
+All files will be found within the `live/` directory within the ISO. `initrd.img` and `vmlinuz` may be suffixed by the kernel version. 
 
-**`live/popos.ipxe`:** Needs `filesystem.squashfs`, `initrd`, and `vmlinuz`. `filesystem.squashfs` can be found in an ISO downloaded from https://pop.system76.com/, in the `casper/` directory. However, both `initrd` and `vmlinuz` will have to be aquired from the netboot.xyz repositories. Download `initrd` and `vmlinuz` from https://github.com/netbootxyz/ubuntu-squash/releases/tag/5-66b7e861.
+Place all files in the base of the designated mirror path.
 
-**`install/alpine.ipxe`:** Needs `modloop-lts`, `initramfs-lts`, and `vmlinuz-lts`. All of these can be found by downloading the netboot build from https://alpinelinux.org.
+## **`live/fedora.ipxe`:** 
+Needs `squashfs.img`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the DVD-ISO from https://getfedora.org, mounting the ISO. 
 
-**`install/debian.ipxe`:** 
+The `initrd.img` and `vmlinuz` files can be found in the path `images/pxeboot` within the ISO, and `squashfs.img` can be found within the `LiveOS/` directory. 
+
+Place all files in the base of the designated mirror path.
+
+## **`live/kali.ipxe`:** 
+Needs `filesystem.squashfs`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the latest Live Boot ISO from https://kali.org. 
+
+All files can be found in the `live/` directory. `initrd.img` and `vmlinuz` may have copies suffixed by the kernel version. 
+
+Place all files in the base of the designated mirror path. 
+
+## **`live/popos.ipxe`:** 
+Needs `filesystem.squashfs`, `initrd`, and `vmlinuz`. `filesystem.squashfs` can be found in an ISO downloaded from https://pop.system76.com/, in the `casper/` directory. 
+
+However, both `initrd` and `vmlinuz` will have to be aquired from the netboot.xyz repositories. Download `initrd` and `vmlinuz` from [here](https://github.com/netbootxyz/ubuntu-squash/releases/tag/5-66b7e861). 
+
+Place all files in the base of the designated mirror path.
+
+# **Installers:**
+
+## **`install/alpine.ipxe`:** 
+Needs `modloop-lts`, `initramfs-lts`, and `vmlinuz-lts`. 
+All of these can be found by downloading the netboot build from https://alpinelinux.org. 
+
+Place all files in the base of the designated mirror path.
+
+## **`install/debian.ipxe`:** 
+Needs `initrd.gz` and `linux`. These can both be found at [this place in the Debian repos](https://deb.debian.org/debian/dists/buster/main/installer-amd64/current/images/netboot/debian-installer/amd64/). 
+Place both files in the base of the designated mirror path.
+
+## **`install/fedora.ipxe`:** 
+Needs `vmlinuz`, `initrd.img`, and `install.img`. All of these can be found by downloading the Fedora Server netinst image(don't worry, it can do Workstation too!), and mounting the ISO. 
+
+`vmlinuz` and `initrd.img` will be in the `images/pxeboot/` directory, and `install.img` will be in the `images/` directory. 
+
+Place `vmlinuz` and `initrd.img` in the base of the designated mirror path, and place `install.img` inside of an `images` directory.
+
+## **`install/rhel.ipxe`:** 
+Needs `vmlinuz`, `initrd.img`, and `install.img`. I will not cover how to get access to RHEL ISOs, but you will want to download the sub 1G boot.iso. 
+
+Mount this ISO, and inside the `images/pxeboot/` directory you will find `vmlinuz` and `initrd.img`. `install.img` will be found in the `images/` directory. 
+
+Place `vmlinuz` and `initrd.img` in the base of the designated mirror path, and place `install.img` inside of an `images` directory.
+
+## **`install/ubuntu.ipxe`:** 
+Needs `initrd`, `vmlinuz`, and a copy of the live ISO for the version you want. 
+
+Download the Live ISO, and mount it. Inside the `casper/` directory you will find the `initrd` and `vmlinuz` files. Make a copy of the ISO and rename it `ubuntu.iso`. 
+
+Copy `initd`, `vmlinuz`, and `ubuntu.iso to the base of the designated mirror path.
+
+## **`install/windows.ipxe`:** 
+You will need `wimboot` to be able to boot Windows. `wimboot` can be found [here](), and will need to be placed at the base of the designated mirror path. 
+
+For each version of Windows you want, EX; Server 2019 and Windows 10, make a folder inline with the naming scheme in the base of the designated mirror path. `Server 2019 -> S2019 | Windows 10 -> W10`.
+
+I will not cover where to aquire Windows or Windows Server ISOs, this assumes you have them.
+
+Mount the ISO for the wanted version, and copy all contents of the ISO into the directory for the version.
