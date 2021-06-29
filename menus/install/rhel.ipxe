@@ -37,9 +37,8 @@ goto boot
 
 :boot
 imgfree
-set rhel_kernel_url ${rhel_mirror}/${rhel_version}/images/pxeboot
-kernel ${rhel_kernel_url}/vmlinuz inst.repo=${rhel_mirror}/${rhel_version} ${ipparam} ${params} initrd=initrd.img ${cmdline}
-initrd ${rhel_kernel_url}/initrd.img
+kernel ${rhel_mirror}/${rhel_version}/vmlinuz inst.repo=${rhel_mirror}/${rhel_version} ${ipparam} ${params} initrd=initrd.img ${cmdline}
+initrd ${rhel_mirror}/${rhel_version}/initrd.img
 boot
 
 :rhel_exit
