@@ -1,4 +1,4 @@
-# Formatting for http/https Mirror for netbooting
+# Formatting for HTTP/HTTPS Mirror for netbooting
 
 Set the URL of the mirror in `menus/boot.cfg`.
 
@@ -8,7 +8,7 @@ Please note that some files may be copyrighted, such as RHEL or Windows.
 
 
 
-All Live Images expect a `vmlinuz`, an `initrd`, and a `squashfs` filesytem.
+All Live Images expect a `vmlinuz`, an `initrd`, and a `squashfs` filesystem.
 
 All Linux Installers expect at least a `vmlinuz` and an `initrd`. 
 
@@ -80,7 +80,7 @@ Place all files in the base of the designated mirror path.
 ## **`live/popos.ipxe`:** 
 Needs `filesystem.squashfs`, `initrd`, and `vmlinuz`. `filesystem.squashfs` can be found in an ISO downloaded from https://pop.system76.com/, in the `casper/` directory. 
 
-However, both `initrd` and `vmlinuz` will have to be aquired from the netboot.xyz repositories. Download `initrd` and `vmlinuz` from [here](https://github.com/netbootxyz/ubuntu-squash/releases/tag/5-66b7e861). 
+However, both `initrd` and `vmlinuz` will have to be acquired from the `netboot.xyz` repositories. Download `initrd` and `vmlinuz` from [here](https://github.com/netbootxyz/ubuntu-squash/releases/tag/5-66b7e861). 
 
 Place all files in the base of the designated mirror path.
 
@@ -104,7 +104,7 @@ Needs `vmlinuz`, `initrd.img`, and `install.img`. All of these can be found by d
 Place `vmlinuz` and `initrd.img` in the base of the designated mirror path, and place `install.img` inside of an `images` directory.
 
 ## **`install/rhel.ipxe`:** 
-Needs `vmlinuz`, `initrd.img`, and `install.img`. I will not cover how to get access to RHEL ISOs, but you will want to download the sub 1G boot.iso. 
+Needs `vmlinuz`, `initrd.img`, and `install.img`. I will not cover how to get access to RHEL ISOs, but you will want to download the sub 1G `boot.iso`. 
 
 Mount this ISO, and inside the `images/pxeboot/` directory you will find `vmlinuz` and `initrd.img`. `install.img` will be found in the `images/` directory. 
 
@@ -115,13 +115,13 @@ Needs `initrd`, `vmlinuz`, and a copy of the live ISO for the version you want.
 
 Download the Live ISO, and mount it. Inside the `casper/` directory you will find the `initrd` and `vmlinuz` files. Make a copy of the ISO and rename it `ubuntu.iso`. 
 
-Copy `initd`, `vmlinuz`, and `ubuntu.iso to the base of the designated mirror path.
+Copy `initd`, `vmlinuz`, and `ubuntu.iso` to the base of the designated mirror path.
 
 ## **`install/windows.ipxe`:** 
 You will need `wimboot` to be able to boot Windows. `wimboot` can be found [here](https://github.com/ipxe/wimboot/releases/latest/download/wimboot), and will need to be placed at the base of the designated mirror path. 
 
 For each version of Windows you want, EX; Server 2019 and Windows 10, make a folder inline with the naming scheme in the base of the designated mirror path. `Server 2019 -> S2019 | Windows 10 -> W10`.
 
-I will not cover where to aquire Windows or Windows Server ISOs, this assumes you have them.
+I will not cover where to acquire Windows or Windows Server ISOs, this assumes you have them.
 
 Mount the ISO for the wanted version, and copy all contents of the ISO into the directory for the version.
