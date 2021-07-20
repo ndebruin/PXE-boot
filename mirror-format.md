@@ -1,6 +1,6 @@
 # Formatting for HTTP/HTTPS Mirror for netbooting
 
-Set the URL of the mirror in `menus/boot.cfg`.
+Set the URL of the mirror on line 15 of `menus/menu.ipxe`. It defaults to the root of the server that loaded the iPXE menu.
 
 Can either be an subdomain, as in `boot.example.org`, or a path, such as `files.example.org/pxeboot`.
 
@@ -39,6 +39,8 @@ install/
     alpine.ipxe # Uses version numbers prefixed by 'v', path $mirror_url/alpine/$version/ EX: 3.14 LTS -> v3.14
 
     debian.ipxe # Uses version names, path $mirror_url/debian/$version_name/ EX: buster
+
+    kali.ipxe # Uses a single version name, latest, path $mirror_url/kali/latest/
 
     fedora.ipxe # Uses version numbers, path $mirror_url/fedora/$version_number/ EX: 33, 34
 
@@ -94,6 +96,10 @@ Place all files in the base of the designated mirror path.
 
 ## **`install/debian.ipxe`:** 
 Needs `initrd.gz` and `linux`. These can both be found at [this place in the Debian repos](https://deb.debian.org/debian/dists/buster/main/installer-amd64/current/images/netboot/debian-installer/amd64/). 
+Place both files in the base of the designated mirror path.
+
+## **`install/debian.ipxe`:**
+Needs `initrd.gz` and `linux`. These can both be found in [This archive](http://http.kali.org/kali/dists/kali-rolling/main/installer-amd64/current/images/netboot/netboot.tar.gz), and in the folder structure `debian-installer/amd64` within the archive.
 Place both files in the base of the designated mirror path.
 
 ## **`install/fedora.ipxe`:** 
