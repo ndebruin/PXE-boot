@@ -1,7 +1,5 @@
 #!ipxe
 
-set mirror_url http://${next-server}
-
 :start
 ntp 0.pool.ntp.org ||
 
@@ -13,6 +11,8 @@ set cls ${cls:string}
 isset ${ip} || dhcp || echo DHCP failed
 
 :main_menu
+
+set mirror_url http://${next-server}
 
 clear version
 set space:hex 20:20
