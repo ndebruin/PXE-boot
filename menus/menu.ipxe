@@ -32,6 +32,7 @@ item install/debian ${space} Install Debian Linux
 item install/fedora ${space} Install Fedora Linux
 item install/alpine ${space} Install Alpine Linux
 item install/ubuntu ${space} Install Ubuntu Linux
+item install/kali ${space} Install Kali Linux
 
 item --gap Live Boot Images:
 item live/debian ${space} Debian Live
