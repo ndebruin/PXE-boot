@@ -1,7 +1,8 @@
 #!ipxe
 
+set mirror_url http://${next-server}
+
 :start
-chain --autofree boot.cfg ||
 ntp 0.pool.ntp.org ||
 
 iseq ${cls} serial && goto ignore_cls ||
