@@ -23,7 +23,7 @@ exit 0
 
 :clonezilla_installer
 imgfree
-kernel ${clonezilla_live_mirror}/vmlinuz boot=live fetch=${clonezilla_live_mirror}/${selection}/filesystem.squashfs initrd=initrd.img ${cmdline}
+kernel ${clonezilla_live_mirror}/vmlinuz boot=live fetch=${clonezilla_live_mirror}/filesystem.squashfs initrd=initrd.img ${cmdline}
 initrd ${clonezilla_live_mirror}/initrd.img
 boot
 
