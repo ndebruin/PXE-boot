@@ -25,6 +25,8 @@ tools/
     pciids.ipxe # DO NOT TOUCH
     netinfo.ipxe # DO NOT TOUCH
     dban.ipxe # Needs DBAN.BZI in $mirror_url/DBAN.BZI, can change path by editing line 3.
+    memtest.ipxe # single version, path $mirror_url/memtest/
+    clonezilla.ipxe # single version, path $mirror_url/clonezilla/
 
 live/
     debian.ipxe # Uses version names, path $mirror_url/debian/live/$version_name/ EX: buster
@@ -55,6 +57,19 @@ install/
 
 ## **`tools/dban.ipxe`:** 
 `DBAN.BZI` can be found by downloading the latest version of DBAN in ISO format from https://dban.org/, mounting the ISO, and extracting the `dban.bzi` file.
+
+## **`tools/memtest.ipxe`:**
+Needs `memdisk` and `memtest.iso`. `memtest.iso` can be found by downloading the latest ISO from https://memtest.org/, and renaming the ISO to `memtest.iso`
+`memdisk` can be found by downloading `syslinux` version 5.10, found [here](https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-5.10.zip). `memdisk` will be found in the `memdisk/` directory within the archive.
+
+Place both files in the base of the designated mirror path.
+
+## **`tools/clonezilla.ipxe`:**
+Needs `filesystem.squashfs`, `initrd.img`, and `vmlinuz`. All of these can be found by downloading the latest ZIP from https://clonezilla.org.
+
+All files will be found within the `live/` directory within the archive. 
+
+Place all files in the base of the designated mirror path.
 
 # **Live Images:**
 

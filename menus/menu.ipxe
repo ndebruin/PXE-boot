@@ -45,6 +45,8 @@ item tools/netinfo ${space} Network Card Info
 item shell ${space} iPXE Shell
 item tools/lspci ${space} List PCI Devices
 item tools/dban ${space} DBAN
+item tools/memtest ${space} Memtest86+
+item tools/clonezilla ${space} Clonezilla
 
 isset ${menu} && set timeout 0 || set timeout 300000
 choose --timeout ${timeout} --default ${menu} menu || goto local

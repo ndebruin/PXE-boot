@@ -1,0 +1,24 @@
+#!ipxe
+  
+set memtest_mirror ${mirror_url}/memtest
+
+:memtest 
+clear selection
+
+menu Memtest86+
+
+item mem_boot ${space} Boot Memtest86+
+item mem_exit ${space} exit
+choose selection || goto mem_exit
+goto ${selection}
+
+:mem_exit
+clear menu
+exit 0
+
+:mem_boot
+imgfree
+kernel ${memtest_mirror}/memdisk || read void
+initrd ${memtest_mirror}/memtest.iso || read void
+imgargs memdisk iso raw || read void
+boot || read void
