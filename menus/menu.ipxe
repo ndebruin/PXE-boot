@@ -32,7 +32,6 @@ item install/debian ${space} Install Debian Linux
 item install/fedora ${space} Install Fedora Linux
 item install/alpine ${space} Install Alpine Linux
 item install/ubuntu ${space} Install Ubuntu Linux
-item install/kali ${space} Install Kali Linux
 
 item --gap Live Boot Images:
 item live/debian ${space} Debian Live
@@ -61,7 +60,7 @@ exit 0
 
 
 :error
-echo Error occurred, press any key to return to menu ...
+echo Error occured, press any key to return to menu ...
 prompt
 goto main_menu
 
