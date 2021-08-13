@@ -10,6 +10,7 @@ menu ESXi Installer
 item 6.7 ${space} Boot ESXi 6.7 Installer
 item 7.0 ${space} Boot ESXi 7 Installer
 item 6.0 ${space} Boot ESXi 6 Installer
+item 6.5 ${space} Boot ESXi 6.5 Installer
 
 
 item esxi_exit ${space} exit
