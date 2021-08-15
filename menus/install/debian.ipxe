@@ -11,6 +11,7 @@ menu Debian Installers
 
 item --gap Installers:
 item buster ${space} Debian 10 (buster)
+item bullseye ${space} Debian 11 (bullseye)
 
 choose selection || goto debian_exit
 

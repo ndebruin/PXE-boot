@@ -11,6 +11,7 @@ menu Debian Live Images
 
 item --gap Live Images:
 item buster ${space} Debian 10 (buster)
+item bullseye ${space} Debian 11 (bullseye)
 
 choose selection || goto debian_exit
 

@@ -110,12 +110,15 @@ All of these can be found by downloading the netboot build from https://alpineli
 Place all files in the base of the designated mirror path.
 
 ## **`install/debian.ipxe`:** 
-Needs `initrd.gz` and `linux`. These can both be found at [this place in the Debian repos](https://deb.debian.org/debian/dists/buster/main/installer-amd64/current/images/netboot/debian-installer/amd64/). 
+Needs `initrd.gz` and `linux`. These can both be found at [this place in the Debian repos](https://deb.debian.org/debian/dists/buster/main/installer-amd64/current/images/netboot/debian-installer/amd64/) for buster. 
 Place both files in the base of the designated mirror path.
 
-## **`install/debian.ipxe`:**
+## **`install/kali.ipxe`:**
 Needs `initrd.gz` and `linux`. These can both be found in [This archive](http://http.kali.org/kali/dists/kali-rolling/main/installer-amd64/current/images/netboot/netboot.tar.gz), and in the folder structure `debian-installer/amd64` within the archive.
 Place both files in the base of the designated mirror path.
+
+## **`install/esxi.ipxe`:**
+Needs the ISOs from VMware's website. Also needs `memdisk` which can be found in the same place as for memtest86+. Place all files in the base of the mirror path.
 
 ## **`install/fedora.ipxe`:** 
 Needs `vmlinuz`, `initrd.img`, and `install.img`. All of these can be found by downloading the Fedora Server netinst image(don't worry, it can do Workstation too!), and mounting the ISO. 
