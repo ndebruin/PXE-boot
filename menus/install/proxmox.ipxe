@@ -1,0 +1,27 @@
+#!ipxe
+  
+set prox_mirror ${mirror_url}/proxmox
+
+:prox 
+clear selection
+
+menu Proxmox Installer
+
+item 6 ${space} Boot Proxmox 6 Installer
+item 7 ${space} Boot Proxmox 7 Installer
+
+
+item prox_exit ${space} exit
+choose selection || goto prox_exit
+goto prox_boot
+
+:prox_exit
+clear menu
+exit 0
+
+:prox_boot
+imgfree
+kernel ${prox_mirror}/memdisk || read void
+initrd ${prox_mirror}/${selection}.iso || read void
+imgargs memdisk iso raw || read void
+boot || read void

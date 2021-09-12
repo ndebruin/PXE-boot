@@ -29,6 +29,7 @@ item --gap Installers:
 item install/rhel ${space} Install RedHat Enterprise Linux
 item install/windows ${space} Install Windows 10/Server 2019
 item install/esxi ${space} Install VMware ESXi Hypervisor
+item install/proxmox ${space} Install Proxmox VE Hypervisor
 item install/debian ${space} Install Debian Linux
 item install/fedora ${space} Install Fedora Linux
 item install/alpine ${space} Install Alpine Linux
