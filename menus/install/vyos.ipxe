@@ -1,0 +1,25 @@
+#!ipxe
+  
+set vyos_mirror ${mirror_url}/vyos
+
+:vyos 
+clear selection
+
+menu vyOS Installer
+
+item 14R ${space} Boot vyOS 1.4 Rolling Installer
+item 13L ${space} Boot vyOS 1.3 LTS Installer
+
+choose selection || goto vyos_exit
+goto vyos_boot
+
+:vyos_exit
+clear menu
+exit 0
+
+:vyos_boot
+imgfree
+kernel ${vyos_mirror}/memdisk || read void
+initrd ${vyos_mirror}/${selection}.iso || read void
+imgargs memdisk iso raw || read void
+boot || read void
